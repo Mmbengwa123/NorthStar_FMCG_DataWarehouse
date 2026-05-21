@@ -271,23 +271,5 @@ EXEC msdb.dbo.sp_purge_jobhistory
 7. **Implement incremental loading** to avoid full reloads (future enhancement)
 8. **Archive old staging data** to prevent disk space issues
 
-## Next Steps
-
-- ✅ Create SQL Agent jobs (`sql_agent_jobs.sql`)
-- ✅ Set up monitoring (`sql_agent_monitoring.sql`)
-- ✅ Configure email alerts (`sql_agent_email_alerts.sql`)
-- ⏳ Build SSIS packages for advanced ETL (with error handling, logging, SCD)
-- ⏳ Create Power BI dashboard for real-time monitoring
-- ⏳ Implement incremental load logic (CDC or watermark)
-
-## Support
-
-For issues or questions:
-- Check SQL Server Agent error log: `C:\Program Files\Microsoft SQL Server\MSSQL*.MSSQLSERVER\MSSQL\LOG\`
-- Review job history: SSMS → SQL Server Agent → Jobs → Right-click → View History
-- Test individual stored procedures in SSMS to isolate issues
-
----
-
 **Last Updated**: May 21, 2026
 **Version**: 1.0
