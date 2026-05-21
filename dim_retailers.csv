@@ -1,0 +1,101 @@
+retailer_id,customer_id,customer_name,us_region,channel,n_stores,contract_start_date,annual_revenue_potential,account_status
+RET00003,CUST00003,XYZ Industries,Northeast,Retail,10,2020-09-04,3102814,Active
+RET00004,CUST00004,American Corp,Midwest,Retail,62,2020-11-29,3948027,Active
+RET00009,CUST00009,XYZ Wholesale,Northeast,Retail,48,2020-03-28,4713444,Inactive
+RET00010,CUST00010,National Logistics,Midwest,Retail,49,2021-11-19,3468505,Active
+RET00012,CUST00012,ABC Distribution,Northeast,Discount,36,2020-07-17,2931263,Active
+RET00015,CUST00015,First Group,Midwest,Retail,49,2020-08-27,3816255,Active
+RET00022,CUST00022,Continental Supply Chain,Midwest,Discount,65,2021-05-23,3712034,Active
+RET00026,CUST00026,ABC Supply Chain,Northeast,Retail,51,2020-10-14,4677044,Inactive
+RET00027,CUST00027,Superior Foods,Midwest,Discount,25,2021-02-03,1894559,Active
+RET00030,CUST00030,ABC Manufacturing,Midwest,Retail,79,2021-03-25,2231454,Active
+RET00032,CUST00032,Continental Wholesale,Midwest,Retail,40,2021-09-01,3895035,Active
+RET00033,CUST00033,XYZ Foods,Midwest,Retail,23,2020-11-22,3853900,Active
+RET00035,CUST00035,United Distribution,South,Discount,24,2021-12-23,101641,Active
+RET00037,CUST00037,American Retail,Midwest,Retail,61,2020-05-16,2486409,Active
+RET00038,CUST00038,Continental Supply Chain,Northeast,E-commerce,22,2020-01-25,236754,Active
+RET00039,CUST00039,XYZ Wholesale,Northeast,Retail,51,2020-09-02,4442022,Active
+RET00040,CUST00040,ABC Corp,Northeast,Retail,53,2020-01-28,1233181,Active
+RET00041,CUST00041,XYZ Industries,Midwest,E-commerce,18,2020-05-01,2632031,Active
+RET00045,CUST00045,First Logistics,Midwest,Discount,19,2021-04-22,1902064,Active
+RET00047,CUST00047,Elite Industries,South,Retail,35,2020-08-08,282044,Inactive
+RET00048,CUST00048,First Manufacturing,South,Discount,5,2021-09-30,2414896,Active
+RET00049,CUST00049,Continental Corp,South,Discount,58,2020-01-30,4744463,Active
+RET00050,CUST00050,Global Manufacturing,Midwest,Discount,7,2020-04-08,4388856,Active
+RET00053,CUST00053,Elite Supply Chain,Midwest,Retail,20,2021-11-01,4895027,Active
+RET00054,CUST00054,First Wholesale,Midwest,Retail,61,2021-11-01,1397841,Active
+RET00055,CUST00055,National Corp,Northeast,Discount,79,2021-01-02,890937,Active
+RET00057,CUST00057,Premier Wholesale,Midwest,E-commerce,16,2021-07-28,3961861,Active
+RET00060,CUST00060,Global Wholesale,South,Discount,78,2021-09-14,1261052,Active
+RET00061,CUST00061,Elite Group,Midwest,Retail,20,2021-08-26,2322881,Active
+RET00062,CUST00062,Premier Group,South,Discount,76,2020-08-20,3179314,Inactive
+RET00063,CUST00063,Superior Group,Northeast,Discount,28,2021-05-08,4983476,Active
+RET00066,CUST00066,Elite Foods,South,Retail,32,2020-03-12,2249529,Active
+RET00067,CUST00067,Metro Supply Chain,Midwest,Retail,12,2021-01-11,2619119,Active
+RET00068,CUST00068,Metro Manufacturing,Northeast,Discount,40,2020-10-09,870956,Active
+RET00069,CUST00069,Continental Manufacturing,Northeast,Retail,12,2021-06-18,4885593,Active
+RET00073,CUST00073,Pacific Supply Chain,Midwest,Retail,62,2020-12-31,747613,Active
+RET00074,CUST00074,First Industries,Midwest,Retail,64,2021-08-17,2823714,Active
+RET00076,CUST00076,Metro Wholesale,South,Retail,54,2021-11-22,1550411,Active
+RET00079,CUST00079,Pacific Logistics,South,Retail,32,2020-10-10,899971,Active
+RET00080,CUST00080,First Distribution,Midwest,E-commerce,45,2020-06-08,2619881,Inactive
+RET00081,CUST00081,ABC Wholesale,Midwest,E-commerce,68,2021-03-06,413495,Active
+RET00082,CUST00082,Global Logistics,Northeast,Retail,31,2020-06-25,4934218,Inactive
+RET00083,CUST00083,Metro Logistics,South,E-commerce,67,2020-01-19,3300640,Inactive
+RET00086,CUST00086,Premier Foods,Midwest,Discount,21,2020-05-31,2905063,Active
+RET00087,CUST00087,Global Logistics,Midwest,Retail,77,2021-06-24,3018650,Inactive
+RET00090,CUST00090,ABC Supply Chain,Midwest,Retail,37,2021-02-04,1111167,Active
+RET00091,CUST00091,American Distribution,Northeast,Retail,33,2020-09-09,2001845,Active
+RET00094,CUST00094,National Retail,Northeast,Retail,17,2020-06-13,554058,Active
+RET00097,CUST00097,National Wholesale,Midwest,Discount,50,2020-07-07,445461,Active
+RET00099,CUST00099,First Logistics,South,Discount,39,2020-09-28,4629258,Inactive
+RET00101,CUST00101,United Corp,Northeast,Retail,10,2021-04-07,1354768,Active
+RET00104,CUST00104,Pacific Corp,Midwest,E-commerce,73,2020-09-24,1952180,Inactive
+RET00105,CUST00105,First Corp,Midwest,Discount,51,2022-01-01,1385113,Active
+RET00108,CUST00108,Global Distribution,Midwest,Retail,29,2020-12-09,3838099,Active
+RET00111,CUST00111,XYZ Wholesale,South,E-commerce,70,2020-04-07,855670,Active
+RET00112,CUST00112,ABC Wholesale,Northeast,E-commerce,14,2020-12-25,1962989,Inactive
+RET00114,CUST00114,Premier Manufacturing,Northeast,E-commerce,60,2021-05-02,2530876,Active
+RET00116,CUST00116,Premier Logistics,Northeast,Retail,34,2021-10-29,1341618,Active
+RET00117,CUST00117,Superior Industries,Northeast,Discount,9,2020-02-27,1208882,Active
+RET00118,CUST00118,Continental Manufacturing,South,Discount,37,2020-06-29,2919983,Active
+RET00119,CUST00119,ABC Manufacturing,Midwest,Discount,69,2020-12-01,792438,Inactive
+RET00120,CUST00120,Superior Corp,Northeast,E-commerce,22,2021-06-21,4091758,Active
+RET00121,CUST00121,ABC Corp,Midwest,Discount,53,2020-07-14,4893591,Active
+RET00122,CUST00122,Metro Foods,Midwest,E-commerce,15,2020-02-02,513651,Active
+RET00123,CUST00123,American Corp,Midwest,E-commerce,30,2020-08-10,4698235,Active
+RET00127,CUST00127,Global Group,Midwest,E-commerce,67,2021-03-18,3443087,Active
+RET00128,CUST00128,XYZ Group,Midwest,Retail,63,2021-02-05,4309597,Active
+RET00133,CUST00133,United Supply Chain,Midwest,Retail,31,2021-09-25,4791716,Active
+RET00135,CUST00135,Premier Retail,South,Retail,53,2020-02-27,4192475,Inactive
+RET00136,CUST00136,Pacific Corp,Midwest,E-commerce,37,2021-10-25,3416174,Active
+RET00138,CUST00138,First Logistics,Midwest,Retail,5,2021-08-22,1745000,Active
+RET00139,CUST00139,XYZ Supply Chain,South,Discount,25,2021-07-03,4807415,Active
+RET00141,CUST00141,Metro Corp,South,Retail,59,2021-06-09,2165659,Active
+RET00142,CUST00142,Elite Retail,Midwest,Discount,10,2021-09-14,2132686,Active
+RET00143,CUST00143,ABC Supply Chain,Northeast,E-commerce,73,2020-08-22,700993,Active
+RET00145,CUST00145,National Foods,Northeast,E-commerce,9,2021-09-22,3707652,Inactive
+RET00146,CUST00146,First Foods,Midwest,Retail,7,2021-11-30,2812973,Active
+RET00151,CUST00151,ABC Foods,South,E-commerce,57,2020-08-18,3652916,Active
+RET00152,CUST00152,Metro Retail,South,Discount,27,2020-07-12,3164087,Active
+RET00156,CUST00156,First Logistics,Midwest,Retail,57,2021-04-14,2990084,Active
+RET00158,CUST00158,United Retail,Midwest,Discount,41,2020-12-22,2657005,Active
+RET00162,CUST00162,Metro Distribution,South,Retail,78,2021-12-19,1323214,Active
+RET00164,CUST00164,ABC Industries,Northeast,Retail,78,2020-03-01,476460,Active
+RET00166,CUST00166,ABC Distribution,Northeast,Discount,21,2021-10-12,1775080,Active
+RET00167,CUST00167,XYZ Logistics,Northeast,Retail,77,2020-09-09,3235836,Active
+RET00170,CUST00170,Elite Retail,Northeast,Retail,5,2020-12-28,1042642,Active
+RET00172,CUST00172,National Industries,South,Retail,55,2020-11-02,2138836,Active
+RET00177,CUST00177,First Logistics,South,Retail,49,2021-04-04,1033467,Active
+RET00181,CUST00181,Superior Group,South,Retail,8,2021-02-24,290825,Active
+RET00184,CUST00184,Elite Distribution,Northeast,Discount,66,2020-07-19,4613116,Inactive
+RET00186,CUST00186,National Wholesale,South,Discount,69,2021-09-20,1809609,Active
+RET00187,CUST00187,Metro Logistics,Northeast,Discount,36,2021-05-10,4683738,Active
+RET00188,CUST00188,American Manufacturing,Northeast,E-commerce,38,2020-07-06,4489472,Active
+RET00189,CUST00189,First Retail,Midwest,Discount,76,2020-12-03,2269780,Active
+RET00190,CUST00190,Global Wholesale,South,Discount,43,2021-06-21,4703668,Active
+RET00195,CUST00195,First Manufacturing,South,Retail,30,2020-05-28,4990599,Active
+RET00196,CUST00196,XYZ Logistics,Northeast,Retail,38,2020-04-01,4519111,Active
+RET00198,CUST00198,Elite Wholesale,South,Retail,58,2020-06-09,2242923,Active
+RET00199,CUST00199,First Group,Northeast,Retail,7,2020-06-09,1528744,Active
+RET00200,CUST00200,XYZ Foods,Midwest,Discount,54,2020-11-02,604239,Inactive

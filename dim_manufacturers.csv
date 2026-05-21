@@ -1,0 +1,15 @@
+manufacturer_id,manufacturer_name,brand,categories,country,hq_city,hq_state,contract_type
+MFG-001,JuBrand3 Foods Inc.,JuBrand3,Juice,USA,Chicago,IL,Dedicated
+MFG-002,MiBrand1 Foods Inc.,MiBrand1,Milk,USA,Dallas,TX,Contract
+MFG-003,MiBrand2 Foods Inc.,MiBrand2,Milk,USA,Atlanta,GA,Contract
+MFG-004,MiBrand3 Foods Inc.,MiBrand3,Milk,USA,Denver,CO,Contract
+MFG-005,MiBrand4 Foods Inc.,MiBrand4,Milk,USA,Kansas City,MO,Dedicated
+MFG-006,ReBrand1 Foods Inc.,ReBrand1,ReadyMeal,USA,Houston,TX,Dedicated
+MFG-007,ReBrand2 Foods Inc.,ReBrand2,ReadyMeal,USA,Memphis,TN,Dedicated
+MFG-008,ReBrand4 Foods Inc.,ReBrand4,ReadyMeal,USA,Indianapolis,IN,Contract
+MFG-009,SnBrand2 Foods Inc.,SnBrand2,SnackBar,USA,Minneapolis,MN,Contract
+MFG-010,SnBrand3 Foods Inc.,SnBrand3,SnackBar,USA,Columbus,OH,Contract
+MFG-011,YoBrand1 Foods Inc.,YoBrand1,Yogurt,USA,Phoenix,AZ,Dedicated
+MFG-012,YoBrand2 Foods Inc.,YoBrand2,Yogurt,USA,Charlotte,NC,Contract
+MFG-013,YoBrand3 Foods Inc.,YoBrand3,Yogurt,USA,Cincinnati,OH,Contract
+MFG-014,YoBrand4 Foods Inc.,YoBrand4,Yogurt,USA,Louisville,KY,Dedicated

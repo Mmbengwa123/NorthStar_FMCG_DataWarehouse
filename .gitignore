@@ -1,0 +1,44 @@
+# Operating System
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# Node.js
+node_modules/
+package-lock.json
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+# Local environment
+.env
+.env.local
+*.log
+
+# Compiled files
+*.pyc
+*.pyo
+
+# Temporary files
+*.tmp
+*~
+
+# CSV data (optional - keep if you want to share raw data)
+# *.csv
+
+# Sensitive data
+secrets.json
+credentials.yml

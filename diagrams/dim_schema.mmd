@@ -1,0 +1,28 @@
+erDiagram
+    DIM_SKU {
+        int sku_key PK "surrogate"
+        varchar sku
+        varchar pack_type
+        varchar brand
+        varchar category
+        decimal avg_price
+        int shelf_life_days
+        bit requires_refrigeration
+    }
+    DIM_RETAILER {
+        int retailer_key PK
+        varchar retailer_id
+        varchar customer_name
+        varchar us_region
+        varchar channel
+    }
+    FACT_SKU_DEMAND {
+        bigint fact_key PK
+        date date
+        int sku_key FK
+        int retailer_key FK
+        int units_sold
+        decimal revenue
+    }
+    DIM_SKU ||--o{ FACT_SKU_DEMAND : "sku_key"
+    DIM_RETAILER ||--o{ FACT_SKU_DEMAND : "retailer_key"

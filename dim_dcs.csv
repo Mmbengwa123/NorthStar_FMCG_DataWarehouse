@@ -1,0 +1,51 @@
+facility_id,facility_name,facility_type,city,state,us_region,dc_role,has_refrigeration,dock_doors,storage_capacity_pallets,latitude,longitude,operating_hours
+FAC00001,Houston Distribution Center,Cross-Dock,Houston,TX,South,Primary DC,1,125,17375,29.7604,-95.3698,24/7
+FAC00002,Kansas City Hub,Cross-Dock,Kansas City,MO,Midwest,Primary DC,1,33,3960,39.0997,-94.5786,7AM-7PM
+FAC00003,Charlotte Distribution Center,Distribution Center,Charlotte,NC,South,Primary DC,1,138,14904,35.2271,-80.8431,24/7
+FAC00004,Chicago Distribution Center,Distribution Center,Chicago,IL,Midwest,Primary DC,1,38,3572,41.8781,-87.6298,8AM-5PM
+FAC00005,Indianapolis Hub,Distribution Center,Indianapolis,IN,Midwest,Primary DC,1,56,6944,39.7684,-86.1581,8AM-5PM
+FAC00006,Atlanta Warehouse,Distribution Center,Atlanta,GA,South,Primary DC,1,149,21456,33.749,-84.388,8AM-5PM
+FAC00007,Detroit Warehouse,Terminal,Detroit,MI,Midwest,Secondary DC,1,44,3872,42.3314,-83.0458,24/7
+FAC00008,Philadelphia Hub,Cross-Dock,Philadelphia,PA,Northeast,Primary DC,1,110,8800,39.9526,-75.1652,8AM-5PM
+FAC00009,Nashville Distribution Center,Terminal,Nashville,TN,South,Secondary DC,1,115,10005,36.1627,-86.7816,6AM-10PM
+FAC00010,Indianapolis Distribution Center,Warehouse,Indianapolis,IN,Midwest,Secondary DC,1,92,13064,39.7684,-86.1581,6AM-10PM
+FAC00011,Nashville Distribution Center,Cross-Dock,Nashville,TN,South,Primary DC,1,125,11250,36.1627,-86.7816,8AM-5PM
+FAC00012,Atlanta Distribution Center,Distribution Center,Atlanta,GA,South,Primary DC,0,16,1392,33.749,-84.388,8AM-5PM
+FAC00013,Nashville Distribution Center,Distribution Center,Nashville,TN,South,Primary DC,1,55,6270,36.1627,-86.7816,8AM-5PM
+FAC00014,Indianapolis Warehouse,Distribution Center,Indianapolis,IN,Midwest,Primary DC,1,126,14364,39.7684,-86.1581,8AM-5PM
+FAC00015,Phoenix Distribution Center,Terminal,Phoenix,AZ,Midwest,Secondary DC,1,61,6832,33.4484,-112.074,24/7
+FAC00016,Detroit Hub,Distribution Center,Detroit,MI,Midwest,Primary DC,1,126,10584,42.3314,-83.0458,24/7
+FAC00017,Omaha Distribution Center,Cross-Dock,Omaha,NE,Midwest,Primary DC,1,33,3960,41.2565,-95.9345,6AM-10PM
+FAC00018,Dallas Distribution Center,Cross-Dock,Dallas,TX,South,Primary DC,1,74,7918,32.7767,-96.797,7AM-7PM
+FAC00019,Houston Warehouse,Warehouse,Houston,TX,South,Secondary DC,1,92,7912,29.7604,-95.3698,6AM-10PM
+FAC00020,Nashville Terminal,Cross-Dock,Nashville,TN,South,Primary DC,0,51,4641,36.1627,-86.7816,24/7
+FAC00021,Las Vegas Terminal,Distribution Center,Las Vegas,NV,Midwest,Primary DC,0,41,4633,36.1699,-115.1398,6AM-10PM
+FAC00022,New York Distribution Center,Cross-Dock,New York,NY,Northeast,Primary DC,0,33,3696,40.7128,-74.006,6AM-10PM
+FAC00023,Portland Warehouse,Cross-Dock,Portland,OR,Midwest,Primary DC,1,39,4953,45.5152,-122.6784,24/7
+FAC00024,Denver Distribution Center,Terminal,Denver,CO,Midwest,Secondary DC,1,125,12750,39.7392,-104.9903,7AM-7PM
+FAC00025,Oklahoma City Terminal,Cross-Dock,Oklahoma City,OK,South,Primary DC,1,102,14382,35.4676,-97.5164,24/7
+FAC00026,Atlanta Warehouse,Warehouse,Atlanta,GA,South,Secondary DC,1,31,3596,33.749,-84.388,6AM-10PM
+FAC00027,Philadelphia Hub,Cross-Dock,Philadelphia,PA,Northeast,Primary DC,1,144,17712,39.9526,-75.1652,24/7
+FAC00028,Las Vegas Hub,Terminal,Las Vegas,NV,Midwest,Secondary DC,1,108,12312,36.1699,-115.1398,7AM-7PM
+FAC00029,Miami Warehouse,Terminal,Miami,FL,South,Secondary DC,1,140,20160,25.7617,-80.1918,7AM-7PM
+FAC00030,Detroit Hub,Cross-Dock,Detroit,MI,Midwest,Primary DC,0,50,6300,42.3314,-83.0458,24/7
+FAC00031,Los Angeles Warehouse,Cross-Dock,Los Angeles,CA,Midwest,Primary DC,1,106,8692,34.0522,-118.2437,24/7
+FAC00032,Miami Distribution Center,Terminal,Miami,FL,South,Secondary DC,1,150,12000,25.7617,-80.1918,24/7
+FAC00033,Miami Distribution Center,Distribution Center,Miami,FL,South,Primary DC,1,107,8988,25.7617,-80.1918,8AM-5PM
+FAC00034,Charlotte Terminal,Cross-Dock,Charlotte,NC,South,Primary DC,1,21,1953,35.2271,-80.8431,6AM-10PM
+FAC00035,Phoenix Distribution Center,Terminal,Phoenix,AZ,Midwest,Secondary DC,1,53,5618,33.4484,-112.074,6AM-10PM
+FAC00036,Omaha Distribution Center,Cross-Dock,Omaha,NE,Midwest,Primary DC,1,95,8360,41.2565,-95.9345,7AM-7PM
+FAC00037,Portland Terminal,Terminal,Portland,OR,Midwest,Secondary DC,0,48,4512,45.5152,-122.6784,6AM-10PM
+FAC00038,Salt Lake City Warehouse,Distribution Center,Salt Lake City,UT,Midwest,Primary DC,0,51,6171,40.7608,-111.891,8AM-5PM
+FAC00039,Charlotte Distribution Center,Warehouse,Charlotte,NC,South,Secondary DC,0,47,6110,35.2271,-80.8431,7AM-7PM
+FAC00040,Nashville Distribution Center,Cross-Dock,Nashville,TN,South,Primary DC,0,55,7810,36.1627,-86.7816,24/7
+FAC00041,Milwaukee Distribution Center,Cross-Dock,Milwaukee,WI,Midwest,Primary DC,1,23,3013,43.0389,-87.9065,24/7
+FAC00042,Salt Lake City Terminal,Warehouse,Salt Lake City,UT,Midwest,Secondary DC,0,117,9711,40.7608,-111.891,7AM-7PM
+FAC00043,Atlanta Warehouse,Warehouse,Atlanta,GA,South,Secondary DC,1,88,8976,33.749,-84.388,7AM-7PM
+FAC00044,Las Vegas Terminal,Cross-Dock,Las Vegas,NV,Midwest,Primary DC,1,89,8366,36.1699,-115.1398,7AM-7PM
+FAC00045,Houston Hub,Distribution Center,Houston,TX,South,Primary DC,1,124,15128,29.7604,-95.3698,8AM-5PM
+FAC00046,Los Angeles Distribution Center,Cross-Dock,Los Angeles,CA,Midwest,Primary DC,1,83,8964,34.0522,-118.2437,24/7
+FAC00047,Milwaukee Hub,Warehouse,Milwaukee,WI,Midwest,Secondary DC,1,56,6440,43.0389,-87.9065,8AM-5PM
+FAC00048,Indianapolis Warehouse,Terminal,Indianapolis,IN,Midwest,Secondary DC,1,40,3680,39.7684,-86.1581,24/7
+FAC00049,Dallas Distribution Center,Distribution Center,Dallas,TX,South,Primary DC,0,43,4773,32.7767,-96.797,7AM-7PM
+FAC00050,Detroit Hub,Cross-Dock,Detroit,MI,Midwest,Primary DC,1,61,8418,42.3314,-83.0458,8AM-5PM

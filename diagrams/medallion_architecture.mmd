@@ -1,0 +1,16 @@
+flowchart LR
+    Raw["Raw / Landing (CSV files)"] --> Bronze["Bronze (Staging)\n: initial parsing, type casting"]
+    Bronze --> Silver["Silver (Cleansed ODS)\n: dims and normalized facts"]
+    Silver --> Gold["Gold (Aggregates / BI)\n: cubes, KPI tables, dashboards"]
+    subgraph Issues
+      I1["Duplicates in SKUs"]
+      I2["Inconsistent pack_type values"]
+      I3["Price anomalies between sources"]
+    end
+    Bronze --> I1
+    Silver --> I2
+    Gold --> I3
+    style Raw fill:#f9f,stroke:#333,stroke-width:1px
+    style Bronze fill:#fffae6
+    style Silver fill:#e6f7ff
+    style Gold fill:#e6ffe6
