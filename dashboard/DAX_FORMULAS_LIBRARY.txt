@@ -1,0 +1,312 @@
+// Power BI DAX Formula Library
+// Copy and paste directly into Power BI Desktop measures
+
+// =====================================================================
+// SECTION 1: BASIC AGGREGATES
+// =====================================================================
+
+// Total Revenue
+TotalRevenue = SUMX('fact_sku_demand_daily', 'fact_sku_demand_daily'[revenue])
+
+// Total Units Sold
+TotalUnitsSold = SUM('fact_sku_demand_daily'[units_sold])
+
+// Total Pallets Shipped
+TotalPalletsShipped = SUM('fact_sku_demand_daily'[pallets_shipped])
+
+// Total Weight Shipped (lbs)
+TotalWeightShipped = SUM('fact_sku_demand_daily'[weight_lbs_shipped])
+
+// Average Price per Unit
+AvgPricePerUnit = AVERAGEX('fact_sku_demand_daily', 'fact_sku_demand_daily'[avg_price])
+
+// Transaction Count
+TransactionCount = COUNTA('fact_sku_demand_daily'[fact_key])
+
+// Unique Days
+UniqueDays = DISTINCTCOUNT('fact_sku_demand_daily'[date])
+
+// Unique SKUs
+UniqueSKUs = DISTINCTCOUNT('fact_sku_demand_daily'[sku_key])
+
+// Unique Retailers
+UniqueRetailers = DISTINCTCOUNT('fact_sku_demand_daily'[retailer_key])
+
+// =====================================================================
+// SECTION 2: REVENUE & SALES ANALYSIS
+// =====================================================================
+
+// Average Daily Revenue
+AvgDailyRevenue = AVERAGEX(VALUES('fact_sku_demand_daily'[date]), 
+    CALCULATE(SUM('fact_sku_demand_daily'[revenue])))
+
+// Revenue per SKU
+RevenuePerSKU = DIVIDE(SUM('fact_sku_demand_daily'[revenue]), 
+    DISTINCTCOUNT('fact_sku_demand_daily'[sku_key]), 0)
+
+// Revenue per Retailer
+RevenuePerRetailer = DIVIDE(SUM('fact_sku_demand_daily'[revenue]), 
+    DISTINCTCOUNT('fact_sku_demand_daily'[retailer_key]), 0)
+
+// Units per Transaction
+AvgUnitsPerTransaction = DIVIDE(SUM('fact_sku_demand_daily'[units_sold]), 
+    COUNTA('fact_sku_demand_daily'[fact_key]), 0)
+
+// Average Revenue per Transaction
+AvgRevenuePerTransaction = DIVIDE(SUM('fact_sku_demand_daily'[revenue]), 
+    COUNTA('fact_sku_demand_daily'[fact_key]), 0)
+
+// Revenue per Day
+AvgRevenuePerDay = DIVIDE(SUM('fact_sku_demand_daily'[revenue]), 
+    DISTINCTCOUNT('fact_sku_demand_daily'[date]), 0)
+
+// =====================================================================
+// SECTION 3: PROMOTION & SALES MIX
+// =====================================================================
+
+// Revenue from Promotions
+PromoRevenue = CALCULATE(SUM('fact_sku_demand_daily'[revenue]), 
+    'fact_sku_demand_daily'[promotion_flag] = 1)
+
+// Units from Promotions
+PromoUnits = CALCULATE(SUM('fact_sku_demand_daily'[units_sold]), 
+    'fact_sku_demand_daily'[promotion_flag] = 1)
+
+// Promotion Revenue Percentage
+PromoRevenuePercent = DIVIDE(
+    CALCULATE(SUM('fact_sku_demand_daily'[revenue]), 'fact_sku_demand_daily'[promotion_flag] = 1),
+    SUM('fact_sku_demand_daily'[revenue]), 0) * 100
+
+// Non-Promo Revenue
+NonPromoRevenue = CALCULATE(SUM('fact_sku_demand_daily'[revenue]), 
+    'fact_sku_demand_daily'[promotion_flag] = 0)
+
+// Promo Impact (Promo Revenue vs Non-Promo)
+PromoImpact = DIVIDE(PromoRevenue, NonPromoRevenue, 0) * 100
+
+// =====================================================================
+// SECTION 4: FULFILLMENT & SUPPLY CHAIN
+// =====================================================================
+
+// Total Delivered Quantity
+TotalDelivered = SUM('fact_sku_demand_daily'[delivered_qty])
+
+// Fulfillment Rate (%)
+FulfillmentRate = DIVIDE(
+    SUM('fact_sku_demand_daily'[delivered_qty]),
+    SUM('fact_sku_demand_daily'[delivered_qty]) + SUM('fact_sku_demand_daily'[units_sold]), 0) * 100
+
+// Average Stock Available
+AvgStockAvailable = AVERAGE('fact_sku_demand_daily'[stock_available])
+
+// Average Delivery Days
+AvgDeliveryDays = AVERAGE('fact_sku_demand_daily'[avg_delivery_days])
+
+// Days Inventory Outstanding (assuming sell-through rates)
+DaysInventoryOutstanding = DIVIDE(AvgStockAvailable, 
+    DIVIDE(SUM('fact_sku_demand_daily'[units_sold]), DISTINCTCOUNT('fact_sku_demand_daily'[date]), 0), 0)
+
+// Max Stock Level (peak inventory)
+MaxStockLevel = MAXX(ALL('fact_sku_demand_daily'), 'fact_sku_demand_daily'[stock_available])
+
+// Min Stock Level
+MinStockLevel = MINX(ALL('fact_sku_demand_daily'), 'fact_sku_demand_daily'[stock_available])
+
+// =====================================================================
+// SECTION 5: TIME-BASED MEASURES (GROWTH & TRENDS)
+// =====================================================================
+
+// Revenue This Month
+RevenueThisMonth = CALCULATE(SUM('fact_sku_demand_daily'[revenue]), 
+    MONTH('fact_sku_demand_daily'[date]) = MONTH(TODAY()),
+    YEAR('fact_sku_demand_daily'[date]) = YEAR(TODAY()))
+
+// Revenue Last Month
+RevenueLastMonth = CALCULATE(SUM('fact_sku_demand_daily'[revenue]), 
+    MONTH('fact_sku_demand_daily'[date]) = MONTH(TODAY()) - 1,
+    YEAR('fact_sku_demand_daily'[date]) = YEAR(TODAY()))
+
+// Month-over-Month Growth %
+MoMGrowthPercent = DIVIDE(RevenueThisMonth - RevenueLastMonth, RevenueLastMonth, 0) * 100
+
+// Revenue Last 7 Days
+RevenueLast7Days = CALCULATE(SUM('fact_sku_demand_daily'[revenue]), 
+    'fact_sku_demand_daily'[date] >= TODAY() - 7)
+
+// Revenue Last 30 Days
+RevenueLast30Days = CALCULATE(SUM('fact_sku_demand_daily'[revenue]), 
+    'fact_sku_demand_daily'[date] >= TODAY() - 30)
+
+// Revenue Last Year Same Period
+RevenueLastYearSamePeriod = CALCULATE(SUM('fact_sku_demand_daily'[revenue]), 
+    DATEADD('fact_sku_demand_daily'[date], -12, MONTH))
+
+// Year-over-Year Growth %
+YoYGrowthPercent = DIVIDE(TotalRevenue - RevenueLastYearSamePeriod, 
+    RevenueLastYearSamePeriod, 0) * 100
+
+// =====================================================================
+// SECTION 6: DATA QUALITY & ANOMALIES
+// =====================================================================
+
+// Count of Negative Units (data quality flag)
+NegativeUnitsCount = COUNTX(
+    FILTER('fact_sku_demand_daily', 'fact_sku_demand_daily'[units_sold] < 0),
+    'fact_sku_demand_daily'[fact_key])
+
+// Count of Zero Stock Days
+ZeroStockDaysCount = COUNTX(
+    FILTER('fact_sku_demand_daily', 'fact_sku_demand_daily'[stock_available] = 0),
+    'fact_sku_demand_daily'[fact_key])
+
+// Count of High Delivery Days (>5 days)
+HighDeliveryDaysCount = COUNTX(
+    FILTER('fact_sku_demand_daily', 'fact_sku_demand_daily'[avg_delivery_days] > 5),
+    'fact_sku_demand_daily'[fact_key])
+
+// Data Quality Score (% of clean records)
+DataQualityScore = (1 - DIVIDE(
+    NegativeUnitsCount + ZeroStockDaysCount,
+    COUNTA('fact_sku_demand_daily'[fact_key]), 0)) * 100
+
+// Last Data Load Time
+LastLoadTime = MAX('dim_sku'[load_date])
+
+// Records Loaded in Last 24 Hours
+RecordsLast24h = COUNTX(
+    FILTER('fact_sku_demand_daily', 
+        'fact_sku_demand_daily'[load_date] >= TODAY() - 1),
+    'fact_sku_demand_daily'[fact_key])
+
+// =====================================================================
+// SECTION 7: CATEGORY & SEGMENT ANALYSIS
+// =====================================================================
+
+// Revenue by Category (requires SUMPRODUCT in complex scenarios)
+RevenueByCategoryTop = CALCULATE(
+    SUM('fact_sku_demand_daily'[revenue]),
+    FILTER(ALL('dim_sku'), 'dim_sku'[category] = MAX('dim_sku'[category])))
+
+// Top Category Name
+TopCategoryName = MAXX(
+    TOPN(1, VALUES('dim_sku'[category]), 
+        CALCULATE(SUM('fact_sku_demand_daily'[revenue])), DESC),
+    'dim_sku'[category])
+
+// Revenue from Top Category
+TopCategoryRevenue = CALCULATE(
+    SUM('fact_sku_demand_daily'[revenue]),
+    'dim_sku'[category] = TopCategoryName)
+
+// Top SKU Name
+TopSKUName = MAXX(
+    TOPN(1, VALUES('dim_sku'[sku]), 
+        CALCULATE(SUM('fact_sku_demand_daily'[revenue])), DESC),
+    'dim_sku'[sku])
+
+// Revenue from Top SKU
+TopSKURevenue = CALCULATE(
+    SUM('fact_sku_demand_daily'[revenue]),
+    'dim_sku'[sku] = TopSKUName)
+
+// =====================================================================
+// SECTION 8: CUSTOMER/RETAILER ANALYSIS
+// =====================================================================
+
+// Top Retailer Name
+TopRetailerName = MAXX(
+    TOPN(1, VALUES('dim_retailer'[customer_name]), 
+        CALCULATE(SUM('fact_sku_demand_daily'[revenue])), DESC),
+    'dim_retailer'[customer_name])
+
+// Revenue from Top Retailer
+TopRetailerRevenue = CALCULATE(
+    SUM('fact_sku_demand_daily'[revenue]),
+    'dim_retailer'[customer_name] = TopRetailerName)
+
+// Active Retailers (with sales in current period)
+ActiveRetailers = DISTINCTCOUNT(
+    FILTER(ALL('fact_sku_demand_daily'), 
+        'fact_sku_demand_daily'[units_sold] > 0))
+
+// Inactive Retailers (no recent sales)
+InactiveRetailers = DISTINCTCOUNT('dim_retailer'[retailer_key]) - ActiveRetailers
+
+// Revenue Concentration (Herfindahl Index approximation - top 10%)
+RevenueConcentration = SUMX(
+    TOPN(DIVIDE(DISTINCTCOUNT('dim_retailer'[retailer_key]), 10, 1), 
+        'dim_retailer'[retailer_key], 
+        CALCULATE(SUM('fact_sku_demand_daily'[revenue])), DESC),
+    CALCULATE(SUM('fact_sku_demand_daily'[revenue])))
+
+// =====================================================================
+// SECTION 9: CHANNEL & REGION ANALYSIS
+// =====================================================================
+
+// Revenue by Channel (Top)
+ChannelRevenue = CALCULATE(
+    SUM('fact_sku_demand_daily'[revenue]),
+    FILTER(ALL('dim_retailer'), 'dim_retailer'[channel] = MAX('dim_retailer'[channel])))
+
+// Revenue by Region (Top)
+RegionRevenue = CALCULATE(
+    SUM('fact_sku_demand_daily'[revenue]),
+    FILTER(ALL('dim_retailer'), 'dim_retailer'[us_region] = MAX('dim_retailer'[us_region])))
+
+// Channel Diversity (count of distinct channels)
+ChannelDiversity = DISTINCTCOUNT('dim_retailer'[channel])
+
+// Regional Diversity
+RegionalDiversity = DISTINCTCOUNT('dim_retailer'[us_region])
+
+// =====================================================================
+// SECTION 10: ADVANCED / RANKED MEASURES
+// =====================================================================
+
+// Revenue Rank (1 = highest revenue)
+RevenueRank = RANKX(
+    ALL('dim_sku'),
+    CALCULATE(SUM('fact_sku_demand_daily'[revenue])),
+    ,
+    DESC)
+
+// Sales Rank (1 = most units)
+SalesRank = RANKX(
+    ALL('dim_sku'),
+    CALCULATE(SUM('fact_sku_demand_daily'[units_sold])),
+    ,
+    DESC)
+
+// Percentile Rank (for identifying top performers: 0.1 = top 10%)
+RevenuePercentile = PERCENTRANK.INC(
+    ALL('dim_sku'),
+    CALCULATE(SUM('fact_sku_demand_daily'[revenue])))
+
+// Top 10 Threshold (revenue amount for top 10%)
+Top10RevenueThreshold = PERCENTILE.INC(
+    ALL('fact_sku_demand_daily'),
+    0.9)
+
+// =====================================================================
+// INSTRUCTIONS FOR USE
+// =====================================================================
+
+/*
+1. Copy and paste each measure into Power BI Desktop
+2. Right-click on a table → New Measure → Paste the DAX code
+3. Verify no red squiggles (syntax errors)
+4. Test by dragging the measure to a Card visual
+5. Use in slicers, charts, and KPI indicators
+
+Example Usage:
+- KPI Card: Drag "TotalRevenue" measure
+- Line Chart: X-axis = Date field, Y-axis = "AvgDailyRevenue" measure
+- Gauge: Use "FulfillmentRate" (min=0, max=100)
+- Table: Columns = Category, "RevenueByCategoryTop", "PromoRevenuePercent"
+
+Performance Tips:
+- Wrap complex measures in CALCULATE() for context filtering
+- Use DISTINCTCOUNT sparingly (can slow down large tables)
+- Cache frequently used TOPN results in a separate measure
+- Consider moving to SUMMARIZE tables for very large fact tables
+*/

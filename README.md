@@ -1,105 +1,125 @@
-NorthStar FMCG Supply Chain - End-to-End Data Warehouse PoC
+# NorthStar FMCG Supply Chain
 
-Project summary
-- Purpose: Demonstrate an end-to-end supply-chain ETL into a small data warehouse using the provided CSV datasets, perform data quality checks, and enable BI reporting.
-- Scope: Ingestion (staging), dim/fact modeling (star schema), ETL stored procedures (MERGE/upsert), orchestration (SSIS + SQL Agent), data quality checks, and a Power BI-ready model.
+![Project](https://img.shields.io/badge/Project-End-to-End%20Data%20Warehouse-blue?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Proof%20of%20Concept-brightgreen?style=for-the-badge)
+![Domain](https://img.shields.io/badge/Domain-FMCG%20Supply%20Chain-orange?style=for-the-badge)
 
-Artifacts created
-- SQL (create databases, staging, dims/facts, procs, checks): [sql/create_databases_and_schemas.sql](sql/create_databases_and_schemas.sql)
-- Staging table DDL: [sql/create_staging_tables.sql](sql/create_staging_tables.sql)
-- Dim & Fact DDL: [sql/create_dim_fact_tables.sql](sql/create_dim_fact_tables.sql)
-- ETL Stored Procedures: [sql/stored_procedures.sql](sql/stored_procedures.sql)
-- Data-quality checks: [sql/quality_checks.sql](sql/quality_checks.sql)
-- Star-schema (ER): [diagrams/dim_schema.mmd](diagrams/dim_schema.mmd)
-- Medallion architecture: [diagrams/medallion_architecture.mmd](diagrams/medallion_architecture.mmd)
-- Orchestration plan (SSIS / SQL Agent): [docs/ssis_plan.md](docs/ssis_plan.md)
-- Dashboard guide: [dashboard/README.md](dashboard/README.md)
+---
 
-End-to-end process (high level)
-1. Landing: CSV files are placed into a secure landing folder (network share or Azure Blob).
-2. Ingest -> Bronze (Staging): SSIS Flat File or BULK INSERT reads CSVs into `NorthStar_Staging.dbo.staging.*` tables; minimal parsing and type casting.
-3. Clean / Normalize -> Silver (ODS): Run stored procedures to upsert into `dw.dim_*` and prepare normalized facts (MERGE patterns implemented in `dw.sp_upsert_*`).
-4. Enrich / Aggregate -> Gold (BI): Load cleansed facts into `dw.fact_*` and create aggregated KPI tables or materialized views for reporting.
-5. Orchestration & Scheduling: SSIS packages chained and scheduled by SQL Agent; run data-quality checks and alert on failures.
+## 🌟 Overview
 
-Star schema (summary)
-- Fact table: `dw.fact_sku_demand_daily` (grain: sku x retailer x date)
-- Dimensions:
-	- `dw.dim_sku` — SKU attributes (sku, pack_type, brand, category, packaging, avg_price, shelf_life)
-	- `dw.dim_retailer` — Retailer/customer attributes (retailer_id, customer_name, region, channel)
+NorthStar is an end-to-end FMCG supply chain data warehouse proof of concept. It ingests CSV data, loads a staging layer, builds a star schema, applies ETL logic, validates quality, and prepares data for Power BI reporting.
 
-This star model supports time-series sales, revenue, and segmentation analysis.
+## 🚀 What this repo includes
 
-Medallion architecture
-- Raw (CSV landing) -> Bronze (Staging) -> Silver (ODS/dim normalized) -> Gold (aggregates/BI), represented in [diagrams/medallion_architecture.mmd](diagrams/medallion_architecture.mmd).
+| Artifact | Purpose | Location |
+|---|---|---|
+| SQL DDL | Create databases, schemas, staging, dims, and facts | `sql/create_databases_and_schemas.sql` |
+| Staging tables | Bronze ingest layer | `sql/create_staging_tables.sql` |
+| Dim/Fact model | Star schema data warehouse | `sql/create_dim_fact_tables.sql` |
+| ETL procedures | MERGE/upsert and load logic | `sql/stored_procedures.sql` |
+| Data quality checks | Validation rules and integrity checks | `sql/quality_checks.sql` |
+| Star schema ER | Logical dimensional model | `diagrams/dim_schema.mmd` |
+| Medallion architecture | Raw → Bronze → Silver → Gold | `diagrams/medallion_architecture.mmd` |
+| Orchestration plan | SSIS / SQL Agent workflow design | `docs/ssis_plan.md` |
+| Dashboard guide | Power BI modeling and report guidance | `dashboard/README.md` |
 
-Tools used
-- SQL Server / SSMS: database, DDL, stored procedures, SQL Agent scheduling
-- SSIS: package-based ingestion and orchestration (Flat File -> Staging -> Execute SQL)
-- Power BI (recommended): dashboard and visualizations
-- Mermaid (for diagrams): `diagrams/*.mmd`
-- Local workspace: CSV files in current project folder
+---
 
-Issues identified and addressed
-- Duplicate SKU rows across `pack_type` variants — resolved by using a composite natural key (`sku`,`pack_type`) and a surrogate `sku_key` in `dw.dim_sku`.
-- Inconsistent `pack_type` naming in source CSVs — recommended normalization in staging (mapping table or standardization step in SSIS).
-- Price mismatches between dim `avg_price` and fact `avg_price` — surfaced by the `sql/quality_checks.sql` rule (>50% difference) for manual review.
-- Missing dim lookups: facts referencing retailer or SKUs not found in dims — handled by filtering in `dw.sp_load_fact_sku_demand_daily` and flagged via the referential-integrity checks.
+## 🧩 Tools used
 
-Data quality checks (how to run)
-1. After running ETL, open and run: [sql/quality_checks.sql](sql/quality_checks.sql) in SSMS.
-2. Key checks included:
-	- Row counts for dims and facts
-	- Null / missing natural keys
-	- Duplicate natural keys
-	- Orphan facts (missing dim FK references)
-	- Negative or anomalous values (negative units, price mismatches)
+<p>
+  <img src="https://img.shields.io/badge/SQL%20Server-4479A1?style=for-the-badge&logo=microsoft-sql-server" alt="SQL Server" />
+  <img src="https://img.shields.io/badge/SSIS-FF6A00?style=for-the-badge&logo=microsoft-sql-server" alt="SSIS" />
+  <img src="https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=power-bi" alt="Power BI" />
+  <img src="https://img.shields.io/badge/Mermaid-FF6F61?style=for-the-badge&logo=mermaid" alt="Mermaid" />
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github" alt="GitHub" />
+  <img src="https://img.shields.io/badge/CSV-34A853?style=for-the-badge&logo=apache%20airflow" alt="CSV" />
+</p>
 
-How to run (quick start)
-1. Create databases and schemas (in SSMS):
-```
--- Run in SSMS as a user with DB create privileges
-:r .\\sql\\create_databases_and_schemas.sql
-```
-2. Create staging and DW tables:
-```
-:r .\\sql\\create_staging_tables.sql
-:r .\\sql\\create_dim_fact_tables.sql
-```
-3. Load CSVs into staging (example using BULK INSERT — adjust path and options):
-```
-USE NorthStar_Staging;
-BULK INSERT staging.stg_dim_skus
-FROM 'C:\\path\\to\\dim_skus.csv'
-WITH (
-	FIRSTROW = 2,
-	FIELDTERMINATOR = ',',
-	ROWTERMINATOR = '\\n',
-	CODEPAGE = '65001'
-);
--- Repeat for other CSV files (dim_retailers, fact_sku_demand_daily, etc.)
-```
-4. Run ETL stored procedures in `NorthStar_DW`:
-```
+- **SQL Server / SSMS**: database objects, stored procedures, scheduled jobs, and data validation.
+- **SSIS**: ETL orchestration and staged file ingestion from CSV sources.
+- **Power BI**: report-ready data model and dashboard guidance.
+- **Mermaid**: architecture and schema diagrams in `diagrams/*.mmd`.
+- **CSV**: source data inputs for dimensions and facts.
+
+---
+
+## 🏗 Architecture
+
+### High-level flow
+
+1. **Landing**: Source CSV files arrive in a secure landing area.
+2. **Bronze / Staging**: Raw CSV data loads into staging tables.
+3. **Silver / Normalization**: Dimension and fact tables are built with MERGE/upsert logic.
+4. **Gold / BI**: Cleaned facts and dims support Power BI analytics.
+5. **Operationalization**: SSIS packages and SQL Agent jobs automate the workflow.
+
+### Star schema
+
+- `dw.fact_sku_demand_daily` — fact table at the SKU × retailer × date grain
+- `dw.dim_sku` — product attributes, pricing, packaging, and shelf life
+- `dw.dim_retailer` — retailer/customer attributes, region, and channel
+
+---
+
+## ✅ Key improvements
+
+- Solved duplicate SKU issues by using a composite natural key: `sku + pack_type`.
+- Normalized inconsistent source values during staging.
+- Added data quality checks for missing keys, duplicates, orphan facts, and price mismatches.
+- Built a reusable ETL process for DIM/FCT load paths.
+
+---
+
+## ⚡ Quick start
+
+```sql
+-- Create databases and schemas
+:r .\sql\create_databases_and_schemas.sql
+
+-- Build staging, dimensions, and facts
+:r .\sql\create_staging_tables.sql
+:r .\sql\create_dim_fact_tables.sql
+
+-- Load ETL logic
 USE NorthStar_DW;
 EXEC dw.sp_upsert_dim_sku;
 EXEC dw.sp_upsert_dim_retailer;
 EXEC dw.sp_load_fact_sku_demand_daily;
-```
-5. Run data-quality checks:
-```
-:r .\\sql\\quality_checks.sql
-```
-6. Connect Power BI to `NorthStar_DW` and model `dw.dim_*` + `dw.fact_*` for reporting.
 
-Next steps (recommended)
-- Build SSIS packages (or Azure Data Factory pipelines) to automate CSV ingestion into staging with type normalization and error handling.
-- Create SQL Agent jobs that run SSIS packages and trigger data-quality checks, with alerting (email/webhook) on failures.
-- Implement incremental loading logic (CDC or watermark column) to avoid full reloads.
-- Build a Power BI report (PBIX) with the suggested visuals and publish to Power BI Service for scheduled refresh.
-- Add monitoring dashboards for ETL health (rows processed, failures, runtime) and unit tests for ETL SQL logic.
+-- Run data quality checks
+:r .\sql\quality_checks.sql
+```
 
+<<<<<<< HEAD
 Contact / Ownership
 - Author: Junior Data Engineering_Mpho Mmbengwa
+=======
+> After setup, connect Power BI to `NorthStar_DW` and model `dw.dim_*` and `dw.fact_*` for fast visual analytics.
 
--- End of README
+---
+
+## 📌 Recommended next steps
+
+- Automate CSV ingestion with SSIS or Azure Data Factory.
+- Schedule SSIS and quality checks with SQL Agent.
+- Add incremental load logic to avoid full reloads.
+- Build a Power BI report and publish to the Power BI Service.
+- Monitor ETL health with row counts, error alerts, and performance checks.
+
+---
+
+## 📁 Helpful links
+
+- `sql/create_databases_and_schemas.sql`
+- `sql/create_staging_tables.sql`
+- `sql/create_dim_fact_tables.sql`
+- `sql/stored_procedures.sql`
+- `sql/quality_checks.sql`
+- `docs/ssis_plan.md`
+- `dashboard/README.md`
+- `diagrams/dim_schema.mmd`
+- `diagrams/medallion_architecture.mmd`
+>>>>>>> 5fc0f46 (Update repository docs with colorful badges and polished README/SSIS/dashboard guides)
+
