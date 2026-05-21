@@ -100,7 +100,6 @@ Next steps (recommended)
 - Add monitoring dashboards for ETL health (rows processed, failures, runtime) and unit tests for ETL SQL logic.
 
 Contact / Ownership
-- Author: Data Engineering PoC
-- If you want, I can: build the SSIS packages, create a starter Power BI PBIX, or generate SQL Agent job scripts — tell me which to do next.
+- Author: Junior Data Engineering_Mpho Mmbengwa
 
 -- End of README
