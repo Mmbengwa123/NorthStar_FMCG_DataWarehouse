@@ -121,5 +121,3 @@ Contact / Ownership
 - `dashboard/README.md`
 - `diagrams/dim_schema.mmd`
 - `diagrams/medallion_architecture.mmd`
->>>>>>> 5fc0f46 (Update repository docs with colorful badges and polished README/SSIS/dashboard guides)
-
