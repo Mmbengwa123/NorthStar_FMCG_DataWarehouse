@@ -6,11 +6,11 @@
 
 ---
 
-## 🌟 Overview
+##  Overview
 
 NorthStar is an end-to-end FMCG supply chain data warehouse proof of concept. It ingests CSV data, loads a staging layer, builds a star schema, applies ETL logic, validates quality, and prepares data for Power BI reporting.
 
-## 🚀 What this repo includes
+##  What this repo includes
 
 | Artifact | Purpose | Location |
 |---|---|---|
@@ -63,7 +63,7 @@ NorthStar is an end-to-end FMCG supply chain data warehouse proof of concept. It
 
 ---
 
-## ✅ Key improvements
+##  Key improvements
 
 - Solved duplicate SKU issues by using a composite natural key: `sku + pack_type`.
 - Normalized inconsistent source values during staging.
@@ -100,7 +100,7 @@ Contact / Ownership
 
 ---
 
-## 📌 Recommended next steps
+##  Recommended next steps
 
 - Automate CSV ingestion with SSIS or Azure Data Factory.
 - Schedule SSIS and quality checks with SQL Agent.
